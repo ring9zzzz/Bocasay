@@ -1,3 +1,5 @@
+using Bocasay.BAL;
+using Bocasay.BAL.Handlers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -5,6 +7,9 @@ using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System;
+using System.Collections.Generic;
+using static Bocasay.Delegate.Delegate;
 
 namespace Bocasay
 {
@@ -21,15 +26,24 @@ namespace Bocasay
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddTransient<ManageDataHandler>();
+
+            services.AddTransient<ServiceResolver>(serviceProvider => key =>
+            {
+                switch (key)
+                {
+                    case nameof(ManageDataHandler):
+                        return serviceProvider.GetService<ManageDataHandler>();
+                    default:
+                        throw new KeyNotFoundException(); // or maybe return null, up to you
+                }
+            });
+
+            services.AddScoped<IHandler, ManageDataHandler>();
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {
                 configuration.RootPath = "ClientApp/dist";
-            });
-
-            services.AddCors(options => {
-                options.AddPolicy("AllowMyOrigin",
-                builder => builder.WithOrigins("*"));
             });
         }
 
@@ -47,7 +61,6 @@ namespace Bocasay
                 app.UseHsts();
             }
 
-            app.UseCors("AllowMyOrigin");
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             if (!env.IsDevelopment())
@@ -73,6 +86,8 @@ namespace Bocasay
 
                 if (env.IsDevelopment())
                 {
+                    app.UseDeveloperExceptionPage();
+                    spa.Options.StartupTimeout = new TimeSpan(days: 0, hours: 0, minutes: 1, seconds: 30);
                     spa.UseAngularCliServer(npmScript: "start");
                 }
             });
