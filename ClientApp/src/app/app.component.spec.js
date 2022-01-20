@@ -62,17 +62,17 @@ describe('AppComponent', function () {
         var app = fixture.componentInstance;
         expect(app).toBeTruthy();
     });
-    it("should have as title 'ClientApp'", function () {
+    it("should have as title 'Bocasay'", function () {
         var fixture = testing_1.TestBed.createComponent(app_component_1.AppComponent);
         var app = fixture.componentInstance;
-        expect(app.title).toEqual('ClientApp');
+        expect(app.title).toEqual('Bocasay');
     });
     it('should render title', function () {
         var _a;
         var fixture = testing_1.TestBed.createComponent(app_component_1.AppComponent);
         fixture.detectChanges();
         var compiled = fixture.nativeElement;
-        expect((_a = compiled.querySelector('.content span')) === null || _a === void 0 ? void 0 : _a.textContent).toContain('ClientApp app is running!');
+        expect((_a = compiled.querySelector('.content span')) === null || _a === void 0 ? void 0 : _a.textContent).toContain('Bocasay app is running!');
     });
 });
 //# sourceMappingURL=app.component.spec.js.map

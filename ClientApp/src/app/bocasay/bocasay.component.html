@@ -2,17 +2,17 @@
   <div class="container mt-6">
     <div class="form-data">
       <div class="forms-inputs mb-4">
-        <span>First Name</span> <input name="firstName" [(ngModel)]="firstName" [ngClass]="{'form-control':true, 'is-invalid' : !firstNameValid}" (change)="validField()">
+        <span>First Name</span> <input name="firstName" [(ngModel)]="firstName" [ngClass]="{'form-control':true, 'is-invalid' : !firstNameValid}">
         <div class="invalid-feedback" *ngIf="firstName.length == 0 && !firstNameValid">{{errMessage}}</div>
       </div>
       <div class="forms-inputs mb-4">
-        <span>Last Name</span> <input name="lastName" [(ngModel)]="lastName" [ngClass]="{'form-control':true, 'is-invalid' : !lastNameValid}" (change)="validField()">
+        <span>Last Name</span> <input name="lastName" [(ngModel)]="lastName" [ngClass]="{'form-control':true, 'is-invalid' : !lastNameValid}">
         <div class="invalid-feedback" *ngIf="lastName.length == 0 && !lastNameValid">{{errMessage}}</div>
       </div>
       <div class="mb-3"> <button (submit)="submit" class="btn btn-dark w-100">Submit</button> </div>
     </div>
     <div class="success-data" *ngIf=subbmited>
-      <div class="text-center d-flex flex-column"> <i class='bx bxs-badge-check'></i> <span class="text-center fs-1">You have been sent data to API</span> </div>
+      <div class="text-center d-flex flex-column"> <i class='bx bxs-badge-check'></i> <span class="text-center fs-1">You have been sent data to API</span> <br/> <span>{{message}}</span></div>
     </div>
   </div>
 </form>

@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bocasay.BAL", "..\Bocasay.B
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bocasay.Model", "..\Bocasay.Model\Bocasay.Model.csproj", "{8F4D44CC-D591-4E31-B1BC-89A8926CF12B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BocasayTests", "..\BocasayTests\BocasayTests.csproj", "{91EC6668-2363-4D49-B0C1-BD80EA00650E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{8F4D44CC-D591-4E31-B1BC-89A8926CF12B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8F4D44CC-D591-4E31-B1BC-89A8926CF12B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8F4D44CC-D591-4E31-B1BC-89A8926CF12B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91EC6668-2363-4D49-B0C1-BD80EA00650E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91EC6668-2363-4D49-B0C1-BD80EA00650E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91EC6668-2363-4D49-B0C1-BD80EA00650E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91EC6668-2363-4D49-B0C1-BD80EA00650E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -12,7 +12,7 @@ export class BackendApiService {
   private prefixApi : string = "Bocasay"
 
   postExecute(url: string, data: any): Observable<any> {
-    return this.httpClient.post(`${document.location.href}${this.prefixApi}/${url}`, data);
+    return this.httpClient.post(`${document.location.href}${this.prefixApi}/${url}`, JSON.stringify(data), { headers: { "Content-Type": "application/json"}, responseType: "json" });
   }
 
   getExecute(url: string, data: any): Observable<any> {

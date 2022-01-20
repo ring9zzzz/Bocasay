@@ -1,8 +1,6 @@
-using Bocasay.BAL;
 using Bocasay.BAL.Handlers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -35,11 +33,10 @@ namespace Bocasay
                     case nameof(ManageDataHandler):
                         return serviceProvider.GetService<ManageDataHandler>();
                     default:
-                        throw new KeyNotFoundException(); // or maybe return null, up to you
+                        throw new KeyNotFoundException();
                 }
             });
 
-            services.AddScoped<IHandler, ManageDataHandler>();
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {

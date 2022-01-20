@@ -14,6 +14,7 @@ export class BocasayComponent extends baseComponent implements OnInit {
   firstNameValid: boolean;
   lastNameValid: boolean;
   errMessage: string = "This field is required";
+  message: string;
   subbmited: boolean;
 
   ngOnInit(): void {
@@ -46,6 +47,7 @@ export class BocasayComponent extends baseComponent implements OnInit {
 
   submit()
   {
+    this.validField();
     if (this.firstNameValid && this.lastNameValid) {
       let param =
       {
@@ -54,7 +56,7 @@ export class BocasayComponent extends baseComponent implements OnInit {
       }
 
       this.apiService.postExecute("stored", param)
-        .subscribe(data => { console.log("Succeeded, result = " + data); this.subbmited = true }, (err) => console.error("Failed! " + err));
+        .subscribe(data => { this.subbmited = true; this.message = data.message }, (err) => console.error("Failed! " + err));
     }
   }
 
